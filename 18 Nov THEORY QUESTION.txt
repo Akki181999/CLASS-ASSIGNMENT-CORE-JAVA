@@ -1,0 +1,191 @@
+1)differentiate between RDBMS and non RDBMS
+
+RDBMS:
+1)In RDBMS data will be stores in terms of tables only.
+2)In RDBMS it easy to identify the duplicate data.
+3)It is easy to eliminate the duplicate data.
+4)In RDBMS Normalization is posible.
+5)The relationship between each data point is clear and searching through those relationships is relatively easy. 
+6)The relationship between tables and field types is called a schema.
+7)Relational databases are also called SQL databases. SQL stands for Structured Query Language and it’s the 
+  language relational databases are written in. SQL is used to execute queries, retrieve data, and edit data by updating, deleting, or creating new records.
+
+
+
+Non-RDBMS:
+1)A non-relational database is any database that does not use the tabular schema of rows and columns like in relational databases 
+  Rather, its storage model is optimized for the type of data it’s storing.
+2)Non-relational databases are also known as NoSQL databases which stands for “Not Only SQL.
+3)Where relational databases only use SQL, non-relational databases can use other types of query language.
+4)There are four different types of NoSQL databases.
+   a)Document-oriented databases – Also known as a document store, this database is designed for storing, retrieving and managing document-oriented information. 
+     Document databases usually pair each key with a complex data structure (called a document).
+   b)Key-Value Stores – This is a database that uses different keys where each key is associated with only one value in a collection. Think of it as a dictionary. 
+     This is one of the simplest database types among NoSQL databases.
+   c)Wide-Column Stores – this database uses tables, rows, and columns, but unlike a relational database, the names and format of the columns can vary from row to
+     row in the same table.
+   d) Graph Stores – A graph database uses graph structures for semantic queries with nodes, edges, and properties to represent and store data.
+2)list out few  RDBMS software
+Relational Database Management System (RDBMS): 
+ MariaDB,
+ Db2 Express-C,
+ SQLite,
+ CUBRID,
+ Firebird,
+ Oracle Database XE,
+ Sequel Pro,
+ PostgreSQL,
+ SQL Server Express,
+ MySQL are some of  Relational Database Management System (RDBMS).
+3)explore data types in MYSQL
+ String Data types
+ Numeric Data types
+ Date and time Data types
+
+CHAR(Size)	It is used to specify a fixed length string that can contain numbers, letters, and special characters. Its size can be 0 to 255 characters. Default is 1.
+VARCHAR(Size)	It is used to specify a variable length string that can contain numbers, letters, and special characters. Its size can be from 0 to 65535 characters.
+BINARY(Size)	It is equal to CHAR() but stores binary byte strings. Its size parameter specifies the column length in the bytes. Default is 1.
+VARBINARY(Size)	It is equal to VARCHAR() but stores binary byte strings. Its size parameter specifies the maximum column length in bytes.
+TEXT(Size)	It holds a string that can contain a maximum length of 255 characters.
+TINYTEXT	It holds a string with a maximum length of 255 characters.
+MEDIUMTEXT	It holds a string with a maximum length of 16,777,215.
+LONGTEXT	It holds a string with a maximum length of 4,294,967,295 characters.
+ENUM(val1, val2, val3,...)	It is used when a string object having only one value, chosen from a list of possible values. It contains 65535 values in an ENUM list. If you insert a value that is not in the list, a blank value will be inserted.
+SET( val1,val2,val3,....)	It is used to specify a string that can have 0 or more values, chosen from a list of possible values. You can list up to 64 values at one time in a SET list.
+BLOB(size)	It is used for BLOBs (Binary Large Objects). It can hold up to 65,535 bytes.
+
+MySQL Numeric Data Types
+
+BIT(Size)	It is used for a bit-value type. The number of bits per value is specified in size. Its size can be 1 to 64. The default value is 1.
+INT(size)	It is used for the integer value. Its signed range varies from -2147483648 to 2147483647 and unsigned range varies from 0 to 4294967295. The size parameter specifies the max display width that is 255.
+INTEGER(size)	It is equal to INT(size).
+FLOAT(size, d)	It is used to specify a floating point number. Its size parameter specifies the total number of digits. The number of digits after the decimal point is specified by d parameter.
+FLOAT(p)	It is used to specify a floating point number. MySQL used p parameter to determine whether to use FLOAT or DOUBLE. If p is between 0 to24, the data type becomes FLOAT (). If p is from 25 to 53, the data type becomes DOUBLE().
+DOUBLE(size, d)	It is a normal size floating point number. Its size parameter specifies the total number of digits. The number of digits after the decimal is specified by d parameter.
+DECIMAL(size, d)	It is used to specify a fixed point number. Its size parameter specifies the total number of digits. The number of digits after the decimal parameter is specified by d parameter. The maximum value for the size is 65, and the default value is 10. The maximum value for d is 30, and the default value is 0.
+DEC(size, d)	It is equal to DECIMAL(size, d).
+BOOL	It is used to specify Boolean values true and false. Zero is considered as false, and nonzero values are considered as true.
+
+MySQL Date and Time Data Types
+
+DATE	It is used to specify date format YYYY-MM-DD. Its supported range is from '1000-01-01' to '9999-12-31'.
+DATETIME(fsp)	It is used to specify date and time combination. Its format is YYYY-MM-DD hh:mm:ss. Its supported range is from '1000-01-01 00:00:00' to 9999-12-31 23:59:59'.
+TIMESTAMP(fsp)	It is used to specify the timestamp. Its value is stored as the number of seconds since the Unix epoch('1970-01-01 00:00:00' UTC). Its format is YYYY-MM-DD hh:mm:ss. Its supported range is from '1970-01-01 00:00:01' UTC to '2038-01-09 03:14:07' UTC.
+TIME(fsp)	It is used to specify the time format. Its format is hh:mm:ss. Its supported range is from '-838:59:59' to '838:59:59'
+YEAR	It is used to specify a year in four-digit format. Values allowed in four digit format from 1901 to 2155, and 0000.
+SQL Server Data Types
+SQL Server String Data Type
+
+char(n)	It is a fixed width character string data type. Its size can be up to 8000 characters.
+varchar(n)	It is a variable width character string data type. Its size can be up to 8000 characters.
+varchar(max)	It is a variable width character string data types. Its size can be up to 1,073,741,824 characters.
+text	It is a variable width character string data type. Its size can be up to 2GB of text data.
+nchar	It is a fixed width Unicode string data type. Its size can be up to 4000 characters.
+nvarchar	It is a variable width Unicode string data type. Its size can be up to 4000 characters.
+ntext	It is a variable width Unicode string data type. Its size can be up to 2GB of text data.
+binary(n)	It is a fixed width Binary string data type. Its size can be up to 8000 bytes.
+varbinary	It is a variable width Binary string data type. Its size can be up to 8000 bytes.
+image	It is also a variable width Binary string data type. Its size can be up to 2GB.
+SQL Server Numeric Data Types
+
+bit	It is an integer that can be 0, 1 or null.
+tinyint	It allows whole numbers from 0 to 255.
+Smallint	It allows whole numbers between -32,768 and 32,767.
+Int	It allows whole numbers between -2,147,483,648 and 2,147,483,647.
+bigint	It allows whole numbers between -9,223,372,036,854,775,808 and 9,223,372,036,854,775,807.
+float(n)	It is used to specify floating precision number data from -1.79E+308 to 1.79E+308. The n parameter indicates whether the field should hold the 4 or 8 bytes. Default value of n is 53.
+real	It is a floating precision number data from -3.40E+38 to 3.40E+38.
+money	It is used to specify monetary data from -922,337,233,685,477.5808 to 922,337,203,685,477.5807.
+SQL Server Date and Time Data Type
+
+datetime	It is used to specify date and time combination. It supports range from January 1, 1753, to December 31, 9999 with an accuracy of 3.33 milliseconds.
+datetime2	It is used to specify date and time combination. It supports range from January 1, 0001 to December 31, 9999 with an accuracy of 100 nanoseconds
+date	It is used to store date only. It supports range from January 1, 0001 to December 31, 9999
+time	It stores time only to an accuracy of 100 nanoseconds
+timestamp	It stores a unique number when a new row gets created or modified. The time stamp value is based upon an internal clock and does not correspond to real time. Each table may contain only one-time stamp variable.
+SQL Server Other Data Types
+
+Sql_variant	It is used for various data types except for text, timestamp, and ntext. It stores up to 8000 bytes of data.
+XML	It stores XML formatted data. Maximum 2GB.
+cursor	It stores a reference to a cursor used for database operations.
+table	It stores result set for later processing.
+uniqueidentifier	It stores GUID (Globally unique identifier).
+Oracle Data Types
+Oracle String data types
+
+CHAR(size)	It is used to store character data within the predefined length. It can be stored up to 2000 bytes.
+NCHAR(size)	It is used to store national character data within the predefined length. It can be stored up to 2000 bytes.
+VARCHAR2(size)	It is used to store variable string data within the predefined length. It can be stored up to 4000 byte.
+VARCHAR(SIZE)	It is the same as VARCHAR2(size). You can also use VARCHAR(size), but it is suggested to use VARCHAR2(size)
+NVARCHAR2(size)	It is used to store Unicode string data within the predefined length. We have to must specify the size of NVARCHAR2 data type. It can be stored up to 4000 bytes.
+
+ 4)Find if we can rename a column using alter statement:
+   
+  This SQL tutorial explains how to use the SQL ALTER TABLE statement to add a column, modify a column, drop a column, rename a column or rename a table (with lots of 
+  clear, concise examples). We've also added some practice exercises that you can try for yourself.
+  The SQL ALTER TABLE statement is used to add, modify, or drop/delete columns in a table. The SQL ALTER TABLE statement is also used to rename a table.
+
+1)Add column in table
+Syntax
+To add a column in a table, the ALTER TABLE syntax in SQL is:
+
+ALTER TABLE table_name
+  ADD column_name column_definition;
+
+2)Add multiple columns in table
+Syntax
+To add multiple columns to an existing table, the SQL ALTER TABLE syntax is:
+
+ALTER TABLE table_name
+  ADD (column_1 column_definition,
+       column_2 column_definition,
+       ...
+       column_n column_definition);
+
+3)Modify column in table
+Syntax
+To modify a column in an existing table, the SQL ALTER TABLE syntax is:
+
+For Oracle, MySQL, MariaDB:
+
+ALTER TABLE table_name
+  MODIFY column_name column_type;
+
+4)Modify multiple columns in table
+Syntax
+To modify multiple columns in an existing table, the SQL ALTER TABLE syntax is:
+
+For Oracle:
+
+ALTER TABLE table_name
+  MODIFY (column_1 column_type,
+          column_2 column_type,
+          ...
+          column_n column_type);
+
+5)Drop column in table
+Syntax
+To drop a column in an existing table, the SQL ALTER TABLE syntax is:
+
+ALTER TABLE table_name
+  DROP COLUMN column_name;
+
+6)Rename column in table
+Syntax
+To rename a column in an existing table, the SQL ALTER TABLE syntax is:
+
+For Oracle and PostgreSQL:
+
+ALTER TABLE table_name
+  RENAME COLUMN old_name TO new_name;
+
+7)ename table
+Syntax
+To rename a table, the SQL ALTER TABLE syntax is:
+
+For Oracle, MySQL, MariaDB, PostgreSQL and SQLite:
+
+ALTER TABLE table_name
+  RENAME TO new_table_name;
+
+
