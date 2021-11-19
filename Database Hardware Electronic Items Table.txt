@@ -1,0 +1,328 @@
+* Database Electronic_Items:
+
+mysql> USE HARDWARE
+Database changed
+mysql> SELECT * FROM HARDWARE;
+ERROR 1146 (42S02): Table 'hardware.hardware' doesn't exist
+mysql> USE HARDWARE;
+Database changed
+mysql> CREATE TABLE ELECTRONIC_ITEMS(
+    -> ID INT(4) PRIMARY KEY,
+    -> E_NAME VARCHAR(20) NOT NULL,
+    -> COST INT(4) NOT NULL,
+    -> DATE_OF_MANUFACTURED DATE,
+    -> WARRANTY VARCHAR(20)
+    -> );
+Query OK, 0 rows affected (0.34 sec)
+
+mysql> SELECT * FROM ELECTRONIC_ITEMS;
+Empty set (0.00 sec)
+
+mysql> INSERT INTO ELECTRONIC_ITEMS VALUES('0799','AKSHAY','5000','2018-10-11','6 years');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> INSERT INTO ELECTRONIC_ITEMS VALUES('0899','Laptop','60000','2021-10-11','6 years');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> update ELECTRONIC_ITEMS set e_name='Mobile' where e_name='AKSHAY';
+Query OK, 1 row affected (0.12 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> INSERT INTO ELECTRONIC_ITEMS VALUES('0999','TV','25000','2021-11-23','2 years');
+Query OK, 1 row affected (0.15 sec)
+
+mysql> INSERT INTO ELECTRONIC_ITEMS VALUES('0399','Audio Divice','18000','2019-4-3','3 years');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> INSERT INTO ELECTRONIC_ITEMS VALUES('0299','DVD Player','21000','2010-6-11','7 years');
+Query OK, 1 row affected (0.17 sec)
+
+mysql> INSERT INTO ELECTRONIC_ITEMS VALUES('0199','Mouse','7000','2016-5-17','9 years');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> INSERT INTO ELECTRONIC_ITEMS VALUES('0499','Printer','9500','2013-7-19','8 years');
+Query OK, 1 row affected (0.19 sec)
+
+mysql> SELECT * FROM ELECTRONIC_ITEMS;
++-----+--------------+-------+----------------------+----------+
+| ID  | E_NAME       | COST  | DATE_OF_MANUFACTURED | WARRANTY |
++-----+--------------+-------+----------------------+----------+
+| 199 | Mouse        |  7000 | 2016-05-17           | 9 years  |
+| 299 | DVD Player   | 21000 | 2010-06-11           | 7 years  |
+| 399 | Audio Divice | 18000 | 2019-04-03           | 3 years  |
+| 499 | Printer      |  9500 | 2013-07-19           | 8 years  |
+| 799 | Mobile       |  5000 | 2018-10-11           | 6 years  |
+| 899 | Laptop       | 60000 | 2021-10-11           | 6 years  |
+| 999 | TV           | 25000 | 2021-11-23           | 2 years  |
++-----+--------------+-------+----------------------+----------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT e_name,cost from ELECTRONIC_ITEMS;
++--------------+-------+
+| e_name       | cost  |
++--------------+-------+
+| Mouse        |  7000 |
+| DVD Player   | 21000 |
+| Audio Divice | 18000 |
+| Printer      |  9500 |
+| Mobile       |  5000 |
+| Laptop       | 60000 |
+| TV           | 25000 |
++--------------+-------+
+7 rows in set (0.00 sec)
+
+mysql> select * from ELECTRONIC_ITEMS where cost='7000';
++-----+--------+------+----------------------+----------+
+| ID  | E_NAME | COST | DATE_OF_MANUFACTURED | WARRANTY |
++-----+--------+------+----------------------+----------+
+| 199 | Mouse  | 7000 | 2016-05-17           | 9 years  |
++-----+--------+------+----------------------+----------+
+1 row in set (0.00 sec)
+
+mysql> RENAME TABLE E_NAME TO I_NAME;
+ERROR 1017 (HY000): Can't find file: '.\hardware\e_name.frm' (errno: 2 - No such file or directory)
+mysql> SELECT E_NAME AS I_NAME
+    -> FROM ELECTRONIC_ITEMS;
++--------------+
+| I_NAME       |
++--------------+
+| Mouse        |
+| DVD Player   |
+| Audio Divice |
+| Printer      |
+| Mobile       |
+| Laptop       |
+| TV           |
++--------------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ELECTRONIC_ITEMS;
++-----+--------------+-------+----------------------+----------+
+| ID  | E_NAME       | COST  | DATE_OF_MANUFACTURED | WARRANTY |
++-----+--------------+-------+----------------------+----------+
+| 199 | Mouse        |  7000 | 2016-05-17           | 9 years  |
+| 299 | DVD Player   | 21000 | 2010-06-11           | 7 years  |
+| 399 | Audio Divice | 18000 | 2019-04-03           | 3 years  |
+| 499 | Printer      |  9500 | 2013-07-19           | 8 years  |
+| 799 | Mobile       |  5000 | 2018-10-11           | 6 years  |
+| 899 | Laptop       | 60000 | 2021-10-11           | 6 years  |
+| 999 | TV           | 25000 | 2021-11-23           | 2 years  |
++-----+--------------+-------+----------------------+----------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ELECTRONIC_ITEMS;
++-----+--------------+-------+----------------------+----------+
+| ID  | E_NAME       | COST  | DATE_OF_MANUFACTURED | WARRANTY |
++-----+--------------+-------+----------------------+----------+
+| 199 | Mouse        |  7000 | 2016-05-17           | 9 years  |
+| 299 | DVD Player   | 21000 | 2010-06-11           | 7 years  |
+| 399 | Audio Divice | 18000 | 2019-04-03           | 3 years  |
+| 499 | Printer      |  9500 | 2013-07-19           | 8 years  |
+| 799 | Mobile       |  5000 | 2018-10-11           | 6 years  |
+| 899 | Laptop       | 60000 | 2021-10-11           | 6 years  |
+| 999 | TV           | 25000 | 2021-11-23           | 2 years  |
++-----+--------------+-------+----------------------+----------+
+7 rows in set (0.00 sec)
+
+mysql> select * from ELECTRONIC_ITEMS WHERE E_NAME LIKE 'M%';
++-----+--------+------+----------------------+----------+
+| ID  | E_NAME | COST | DATE_OF_MANUFACTURED | WARRANTY |
++-----+--------+------+----------------------+----------+
+| 199 | Mouse  | 7000 | 2016-05-17           | 9 years  |
+| 799 | Mobile | 5000 | 2018-10-11           | 6 years  |
++-----+--------+------+----------------------+----------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ELECTRONIC_ITEMS WHERE COST BETWEEN 5000 AND 25000;
++-----+--------------+-------+----------------------+----------+
+| ID  | E_NAME       | COST  | DATE_OF_MANUFACTURED | WARRANTY |
++-----+--------------+-------+----------------------+----------+
+| 199 | Mouse        |  7000 | 2016-05-17           | 9 years  |
+| 299 | DVD Player   | 21000 | 2010-06-11           | 7 years  |
+| 399 | Audio Divice | 18000 | 2019-04-03           | 3 years  |
+| 499 | Printer      |  9500 | 2013-07-19           | 8 years  |
+| 799 | Mobile       |  5000 | 2018-10-11           | 6 years  |
+| 999 | TV           | 25000 | 2021-11-23           | 2 years  |
++-----+--------------+-------+----------------------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select e_name as I_NAME
+    -> FROM ELECTRONIC_ITEMS;
++--------------+
+| I_NAME       |
++--------------+
+| Mouse        |
+| DVD Player   |
+| Audio Divice |
+| Printer      |
+| Mobile       |
+| Laptop       |
+| TV           |
++--------------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ELECTRONIC_ITEMS
+    -> ;
++-----+--------------+-------+----------------------+----------+
+| ID  | E_NAME       | COST  | DATE_OF_MANUFACTURED | WARRANTY |
++-----+--------------+-------+----------------------+----------+
+| 199 | Mouse        |  7000 | 2016-05-17           | 9 years  |
+| 299 | DVD Player   | 21000 | 2010-06-11           | 7 years  |
+| 399 | Audio Divice | 18000 | 2019-04-03           | 3 years  |
+| 499 | Printer      |  9500 | 2013-07-19           | 8 years  |
+| 799 | Mobile       |  5000 | 2018-10-11           | 6 years  |
+| 899 | Laptop       | 60000 | 2021-10-11           | 6 years  |
+| 999 | TV           | 25000 | 2021-11-23           | 2 years  |
++-----+--------------+-------+----------------------+----------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ELECTRONIC_ITEMS WHERE COST IS NOT NULL;
++-----+--------------+-------+----------------------+----------+
+| ID  | E_NAME       | COST  | DATE_OF_MANUFACTURED | WARRANTY |
++-----+--------------+-------+----------------------+----------+
+| 199 | Mouse        |  7000 | 2016-05-17           | 9 years  |
+| 299 | DVD Player   | 21000 | 2010-06-11           | 7 years  |
+| 399 | Audio Divice | 18000 | 2019-04-03           | 3 years  |
+| 499 | Printer      |  9500 | 2013-07-19           | 8 years  |
+| 799 | Mobile       |  5000 | 2018-10-11           | 6 years  |
+| 899 | Laptop       | 60000 | 2021-10-11           | 6 years  |
+| 999 | TV           | 25000 | 2021-11-23           | 2 years  |
++-----+--------------+-------+----------------------+----------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ELECTRONIC_ITEMS WHERE COST IS NULL;
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM ELECTRONIC_ITEMS WHERE COST BETWEEN '7000' AND '25000';
++-----+--------------+-------+----------------------+----------+
+| ID  | E_NAME       | COST  | DATE_OF_MANUFACTURED | WARRANTY |
++-----+--------------+-------+----------------------+----------+
+| 199 | Mouse        |  7000 | 2016-05-17           | 9 years  |
+| 299 | DVD Player   | 21000 | 2010-06-11           | 7 years  |
+| 399 | Audio Divice | 18000 | 2019-04-03           | 3 years  |
+| 499 | Printer      |  9500 | 2013-07-19           | 8 years  |
+| 999 | TV           | 25000 | 2021-11-23           | 2 years  |
++-----+--------------+-------+----------------------+----------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ELECTRONIC_ITEMS WHERE E_NAME LIKE 'M%';
++-----+--------+------+----------------------+----------+
+| ID  | E_NAME | COST | DATE_OF_MANUFACTURED | WARRANTY |
++-----+--------+------+----------------------+----------+
+| 199 | Mouse  | 7000 | 2016-05-17           | 9 years  |
+| 799 | Mobile | 5000 | 2018-10-11           | 6 years  |
++-----+--------+------+----------------------+----------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ELECTRONIC_ITEMS WHERE E_NAME LIKE '_V%';
++-----+------------+-------+----------------------+----------+
+| ID  | E_NAME     | COST  | DATE_OF_MANUFACTURED | WARRANTY |
++-----+------------+-------+----------------------+----------+
+| 299 | DVD Player | 21000 | 2010-06-11           | 7 years  |
+| 999 | TV         | 25000 | 2021-11-23           | 2 years  |
++-----+------------+-------+----------------------+----------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ELECTRONIC_ITEMS WHERE E_NAME LIKE '%S_';
++-----+--------+------+----------------------+----------+
+| ID  | E_NAME | COST | DATE_OF_MANUFACTURED | WARRANTY |
++-----+--------+------+----------------------+----------+
+| 199 | Mouse  | 7000 | 2016-05-17           | 9 years  |
++-----+--------+------+----------------------+----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM ELECTRONIC_ITEMS WHERE COST IN('5000','2000');
++-----+--------+------+----------------------+----------+
+| ID  | E_NAME | COST | DATE_OF_MANUFACTURED | WARRANTY |
++-----+--------+------+----------------------+----------+
+| 799 | Mobile | 5000 | 2018-10-11           | 6 years  |
++-----+--------+------+----------------------+----------+
+1 row in set (0.00 sec)
+
+mysql> ALTER TABLE ELECTRONIC_ITEMS
+    -> ADD COLUMN BRAND VARCHAR(20);
+Query OK, 0 rows affected (0.56 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM ELECTRONIC_ITEMS;
++-----+--------------+-------+----------------------+----------+-------+
+| ID  | E_NAME       | COST  | DATE_OF_MANUFACTURED | WARRANTY | BRAND |
++-----+--------------+-------+----------------------+----------+-------+
+| 199 | Mouse        |  7000 | 2016-05-17           | 9 years  | NULL  |
+| 299 | DVD Player   | 21000 | 2010-06-11           | 7 years  | NULL  |
+| 399 | Audio Divice | 18000 | 2019-04-03           | 3 years  | NULL  |
+| 499 | Printer      |  9500 | 2013-07-19           | 8 years  | NULL  |
+| 799 | Mobile       |  5000 | 2018-10-11           | 6 years  | NULL  |
+| 899 | Laptop       | 60000 | 2021-10-11           | 6 years  | NULL  |
+| 999 | TV           | 25000 | 2021-11-23           | 2 years  | NULL  |
++-----+--------------+-------+----------------------+----------+-------+
+7 rows in set (0.00 sec)
+
+mysql> ALTER TABLE ELECTRONIC_ITEMS
+    -> MODIFY COLUMN BRAND VARCHAR(15);
+Query OK, 7 rows affected (0.87 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM ELECTRONIC_ITEMS
+    -> ;
++-----+--------------+-------+----------------------+----------+-------+
+| ID  | E_NAME       | COST  | DATE_OF_MANUFACTURED | WARRANTY | BRAND |
++-----+--------------+-------+----------------------+----------+-------+
+| 199 | Mouse        |  7000 | 2016-05-17           | 9 years  | NULL  |
+| 299 | DVD Player   | 21000 | 2010-06-11           | 7 years  | NULL  |
+| 399 | Audio Divice | 18000 | 2019-04-03           | 3 years  | NULL  |
+| 499 | Printer      |  9500 | 2013-07-19           | 8 years  | NULL  |
+| 799 | Mobile       |  5000 | 2018-10-11           | 6 years  | NULL  |
+| 899 | Laptop       | 60000 | 2021-10-11           | 6 years  | NULL  |
+| 999 | TV           | 25000 | 2021-11-23           | 2 years  | NULL  |
++-----+--------------+-------+----------------------+----------+-------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ELECTRONIC_ITEMS
+    -> ORDER BY COST ASC;
++-----+--------------+-------+----------------------+----------+-------+
+| ID  | E_NAME       | COST  | DATE_OF_MANUFACTURED | WARRANTY | BRAND |
++-----+--------------+-------+----------------------+----------+-------+
+| 799 | Mobile       |  5000 | 2018-10-11           | 6 years  | NULL  |
+| 199 | Mouse        |  7000 | 2016-05-17           | 9 years  | NULL  |
+| 499 | Printer      |  9500 | 2013-07-19           | 8 years  | NULL  |
+| 399 | Audio Divice | 18000 | 2019-04-03           | 3 years  | NULL  |
+| 299 | DVD Player   | 21000 | 2010-06-11           | 7 years  | NULL  |
+| 999 | TV           | 25000 | 2021-11-23           | 2 years  | NULL  |
+| 899 | Laptop       | 60000 | 2021-10-11           | 6 years  | NULL  |
++-----+--------------+-------+----------------------+----------+-------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ELECTRONIC_ITEMS
+    -> ORDER BY E_NAME DESC;
++-----+--------------+-------+----------------------+----------+-------+
+| ID  | E_NAME       | COST  | DATE_OF_MANUFACTURED | WARRANTY | BRAND |
++-----+--------------+-------+----------------------+----------+-------+
+| 999 | TV           | 25000 | 2021-11-23           | 2 years  | NULL  |
+| 499 | Printer      |  9500 | 2013-07-19           | 8 years  | NULL  |
+| 199 | Mouse        |  7000 | 2016-05-17           | 9 years  | NULL  |
+| 799 | Mobile       |  5000 | 2018-10-11           | 6 years  | NULL  |
+| 899 | Laptop       | 60000 | 2021-10-11           | 6 years  | NULL  |
+| 299 | DVD Player   | 21000 | 2010-06-11           | 7 years  | NULL  |
+| 399 | Audio Divice | 18000 | 2019-04-03           | 3 years  | NULL  |
++-----+--------------+-------+----------------------+----------+-------+
+7 rows in set (0.00 sec)
+
+mysql> ALTER TABLE ELECTRONIC_ITEMS
+    -> DROP COLUMN BRAND;
+Query OK, 0 rows affected (0.84 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM ELECTRONIC_ITEMS;
++-----+--------------+-------+----------------------+----------+
+| ID  | E_NAME       | COST  | DATE_OF_MANUFACTURED | WARRANTY |
++-----+--------------+-------+----------------------+----------+
+| 199 | Mouse        |  7000 | 2016-05-17           | 9 years  |
+| 299 | DVD Player   | 21000 | 2010-06-11           | 7 years  |
+| 399 | Audio Divice | 18000 | 2019-04-03           | 3 years  |
+| 499 | Printer      |  9500 | 2013-07-19           | 8 years  |
+| 799 | Mobile       |  5000 | 2018-10-11           | 6 years  |
+| 899 | Laptop       | 60000 | 2021-10-11           | 6 years  |
+| 999 | TV           | 25000 | 2021-11-23           | 2 years  |
++-----+--------------+-------+----------------------+----------+
+7 rows in set (0.00 sec)
