@@ -1,0 +1,558 @@
+1. WAQTD ALL THE DETAILS FROM EMPLOYEE TABLE.
+    
+     mysql> use sql_hr;
+Database changed
+mysql> select * from employees;
++-------------+------------+------------+-----------------------------+--------+------------+-----------+
+| employee_id | first_name | last_name  | job_title                   | salary | reports_to | office_id |
++-------------+------------+------------+-----------------------------+--------+------------+-----------+
+|       33391 | D'arcy     | Nortunen   | Account Executive           |  62871 |      37270 |         1 |
+|       37270 | Yovonnda   | Magrannell | Executive Secretary         |  63996 |       NULL |        10 |
+|       37851 | Sayer      | Matterson  | Statistician III            |  98926 |      37270 |         1 |
+|       40448 | Mindy      | Crissil    | Staff Scientist             |  94860 |      37270 |         1 |
+|       56274 | Keriann    | Alloisi    | VP Marketing                | 110150 |      37270 |         1 |
+|       63196 | Alaster    | Scutchin   | Assistant Professor         |  32179 |      37270 |         2 |
+|       67009 | North      | de Clerc   | VP Product Management       | 114257 |      37270 |         2 |
+|       67370 | Elladine   | Rising     | Social Worker               |  96767 |      37270 |         2 |
+|       68249 | Nisse      | Voysey     | Financial Advisor           |  52832 |      37270 |         2 |
+|       72540 | Guthrey    | Iacopetti  | Office Assistant I          | 117690 |      37270 |         3 |
+|       72913 | Kass       | Hefferan   | Computer Systems Analyst IV |  96401 |      37270 |         3 |
+|       75900 | Virge      | Goodrum    | Information Systems Manager |  54578 |      37270 |         3 |
+|       76196 | Mirilla    | Janowski   | Cost Accountant             | 119241 |      37270 |         3 |
+|       80529 | Lynde      | Aronson    | Junior Executive            |  77182 |      37270 |         4 |
+|       80679 | Mildrid    | Sokale     | Geologist II                |  67987 |      37270 |         4 |
+|       84791 | Hazel      | Tarbert    | General Manager             |  93760 |      37270 |         4 |
+|       95213 | Cole       | Kesterton  | Pharmacist                  |  86119 |      37270 |         4 |
+|       96513 | Theresa    | Binney     | Food Chemist                |  47354 |      37270 |         5 |
+|       98374 | Estrellita | Daleman    | Staff Accountant IV         |  70187 |      37270 |         5 |
+|      115357 | Ivy        | Fearey     | Structural Engineer         |  92710 |      37270 |         5 |
++-------------+------------+------------+-----------------------------+--------+------------+-----------+
+20 rows in set (0.00 sec)
+
+2. WAQTD NAME OF THE EMPLOYEE ALONG WITH HIS SALARY OF ALL EMPLOYEES.
+
+mysql> select first_name,salary
+    -> from employees;
++------------+--------+
+| first_name | salary |
++------------+--------+
+| D'arcy     |  62871 |
+| Yovonnda   |  63996 |
+| Sayer      |  98926 |
+| Mindy      |  94860 |
+| Keriann    | 110150 |
+| Alaster    |  32179 |
+| North      | 114257 |
+| Elladine   |  96767 |
+| Nisse      |  52832 |
+| Guthrey    | 117690 |
+| Kass       |  96401 |
+| Virge      |  54578 |
+| Mirilla    | 119241 |
+| Lynde      |  77182 |
+| Mildrid    |  67987 |
+| Hazel      |  93760 |
+| Cole       |  86119 |
+| Theresa    |  47354 |
+| Estrellita |  70187 |
+| Ivy        |  92710 |
++------------+--------+
+20 rows in set (0.00 sec)
+
+3. WAQTD NAME OF THE EMPLOYEES ALONG WITH THEIR DEPTNO.
+
+  mysql> SELECT FIRST_NAME,DEPT_NO
+    -> FROM EMPLOYEES;
++------------+---------+
+| FIRST_NAME | DEPT_NO |
++------------+---------+
+| D'arcy     |      10 |
+| Yovonnda   |      20 |
+| Sayer      |      30 |
+| Mindy      |      10 |
+| Keriann    |      40 |
+| Alaster    |      50 |
+| North      |      50 |
+| Elladine   |      10 |
+| Nisse      |      20 |
+| Guthrey    |      40 |
+| Kass       |      60 |
+| Virge      |      70 |
+| Mirilla    |      30 |
+| Lynde      |      50 |
+| Mildrid    |      20 |
+| Hazel      |      10 |
+| Cole       |      40 |
+| Theresa    |      50 |
+| Estrellita |      25 |
+| Ivy        |      32 |
++------------+---------+
+20 rows in set (0.00 sec)
+
+4. WAQTD JOB OF ALL THE EMPLOYEES.
+
+mysql> SELECT FIRST_NAME,JOB_TITLE
+    -> FROM EMPLOYEES;
++------------+-----------------------------+
+| FIRST_NAME | JOB_TITLE                   |
++------------+-----------------------------+
+| D'arcy     | Account Executive           |
+| Yovonnda   | Executive Secretary         |
+| Sayer      | Statistician III            |
+| Mindy      | Staff Scientist             |
+| Keriann    | VP Marketing                |
+| Alaster    | Assistant Professor         |
+| North      | VP Product Management       |
+| Elladine   | Social Worker               |
+| Nisse      | Financial Advisor           |
+| Guthrey    | Office Assistant I          |
+| Kass       | Computer Systems Analyst IV |
+| Virge      | Information Systems Manager |
+| Mirilla    | Cost Accountant             |
+| Lynde      | Junior Executive            |
+| Mildrid    | Geologist II                |
+| Hazel      | General Manager             |
+| Cole       | Pharmacist                  |
+| Theresa    | Food Chemist                |
+| Estrellita | Staff Accountant IV         |
+| Ivy        | Structural Engineer         |
++------------+-----------------------------+
+20 rows in set (0.00 sec)
+
+5. WAQTD EMPLOYEE NO AND EMPLOYEE NAMES.
+
+mysql> SELECT EMPLOYEE_ID,FIRST_NAME,LAST_NAME
+    -> FROM EMPLOYEES;
++-------------+------------+------------+
+| EMPLOYEE_ID | FIRST_NAME | LAST_NAME  |
++-------------+------------+------------+
+|       33391 | D'arcy     | Nortunen   |
+|       37270 | Yovonnda   | Magrannell |
+|       37851 | Sayer      | Matterson  |
+|       40448 | Mindy      | Crissil    |
+|       56274 | Keriann    | Alloisi    |
+|       63196 | Alaster    | Scutchin   |
+|       67009 | North      | de Clerc   |
+|       67370 | Elladine   | Rising     |
+|       68249 | Nisse      | Voysey     |
+|       72540 | Guthrey    | Iacopetti  |
+|       72913 | Kass       | Hefferan   |
+|       75900 | Virge      | Goodrum    |
+|       76196 | Mirilla    | Janowski   |
+|       80529 | Lynde      | Aronson    |
+|       80679 | Mildrid    | Sokale     |
+|       84791 | Hazel      | Tarbert   
+|       95213 | Cole       | Kesterton  |
+|       96513 | Theresa    | Binney     |
+|       98374 | Estrellita | Daleman    |
+|      115357 | Ivy        | Fearey     |
++-------------+------------+------------+
+20 rows in set (0.00 sec)
+
+
+6. WAQTD EMPLOYEE NAME AND DESIGNATION.
+
+mysql> SELECT FIRST_NAME,JOB_TITLE
+    -> FROM EMPLOYEES;
++------------+-----------------------------+
+| FIRST_NAME | JOB_TITLE                   |
++------------+-----------------------------+
+| D'arcy     | Account Executive           |
+| Yovonnda   | Executive Secretary         |
+| Sayer      | Statistician III            |
+| Mindy      | Staff Scientist             |
+| Keriann    | VP Marketing                |
+| Alaster    | Assistant Professor         |
+| North      | VP Product Management       |
+| Elladine   | Social Worker               |
+| Nisse      | Financial Advisor           |
+| Guthrey    | Office Assistant I          |
+| Kass       | Computer Systems Analyst IV |
+| Virge      | Information Systems Manager |
+| Mirilla    | Cost Accountant             |
+| Lynde      | Junior Executive            |
+| Mildrid    | Geologist II                |
+| Hazel      | General Manager             |
+| Cole       | Pharmacist                  |
+| Theresa    | Food Chemist                |
+| Estrellita | Staff Accountant IV         |
+| Ivy        | Structural Engineer         |
++------------+-----------------------------+
+20 rows in set (0.00 sec)
+
+7. WAQTD SALARY GIVEN TO ALL THE EMPLOYEES.
+
+mysql> SELECT SALARY
+    -> FROM EMPLOYEES;
++--------+
+| SALARY |
++--------+
+|  62871 |
+|  63996 |
+|  98926 |
+|  94860 |
+| 110150 |
+|  32179 |
+| 114257 |
+|  96767 |
+|  52832 |
+| 117690 |
+|  96401 |
+|  54578 |
+| 119241 |
+|  77182 |
+|  67987 |
+|  93760 |
+|  86119 |
+|  47354 |
+|  70187 |
+|  92710 |
++--------+
+20 rows in set (0.00 sec)
+
+8. WAQTD ANNUAL SALARY GIVEN TO ALL EMPLOYEES WITH ALIAS NAME.
+
+mysql> SELECT FIRST_NAME,LAST_NAME,SALARY,SALARY*12 AS ANNUAL_SALARY
+    -> FROM EMPLOYEES;
++------------+------------+--------+---------------+
+| FIRST_NAME | LAST_NAME  | SALARY | ANNUAL_SALARY |
++------------+------------+--------+---------------+
+| D'arcy     | Nortunen   |  62871 |        754452 |
+| Yovonnda   | Magrannell |  63996 |        767952 |
+| Sayer      | Matterson  |  98926 |       1187112 |
+| Mindy      | Crissil    |  94860 |       1138320 |
+| Keriann    | Alloisi    | 110150 |       1321800 |
+| Alaster    | Scutchin   |  32179 |        386148 |
+| North      | de Clerc   | 114257 |       1371084 |
+| Elladine   | Rising     |  96767 |       1161204 |
+| Nisse      | Voysey     |  52832 |        633984 |
+| Guthrey    | Iacopetti  | 117690 |       1412280 |
+| Kass       | Hefferan   |  96401 |       1156812 |
+| Virge      | Goodrum    |  54578 |        654936 |
+| Mirilla    | Janowski   | 119241 |       1430892 |
+| Lynde      | Aronson    |  77182 |        926184 |
+| Mildrid    | Sokale     |  67987 |        815844 |
+| Hazel      | Tarbert    |  93760 |       1125120 |
+| Cole       | Kesterton  |  86119 |       1033428 |
+| Theresa    | Binney     |  47354 |        568248 |
+| Estrellita | Daleman    |  70187 |        842244 |
+| Ivy        | Fearey     |  92710 |       1112520 |
++------------+------------+--------+---------------+
+20 rows in set (0.00 sec)
+
+9. WAQTD ANNUAL SALARY AND HALF TERM SALARY GIVEN TO ALL THE EMPLOYEES WITH ALIAS NAME.
+
+mysql> SELECT FIRST_NAME,LAST_NAME,SALARY*12 AS ANNUAL_SALARY,(SALARY*12)/2 AS HALF_SALARY
+    -> FROM EMPLOYEES;
++------------+------------+---------------+-------------+
+| FIRST_NAME | LAST_NAME  | ANNUAL_SALARY | HALF_SALARY |
++------------+------------+---------------+-------------+
+| D'arcy     | Nortunen   |        754452 | 377226.0000 |
+| Yovonnda   | Magrannell |        767952 | 383976.0000 |
+| Sayer      | Matterson  |       1187112 | 593556.0000 |
+| Mindy      | Crissil    |       1138320 | 569160.0000 |
+| Keriann    | Alloisi    |       1321800 | 660900.0000 |
+| Alaster    | Scutchin   |        386148 | 193074.0000 |
+| North      | de Clerc   |       1371084 | 685542.0000 |
+| Elladine   | Rising     |       1161204 | 580602.0000 |
+| Nisse      | Voysey     |        633984 | 316992.0000 |
+| Guthrey    | Iacopetti  |       1412280 | 706140.0000 |
+| Kass       | Hefferan   |       1156812 | 578406.0000 |
+| Virge      | Goodrum    |        654936 | 327468.0000 |
+| Mirilla    | Janowski   |       1430892 | 715446.0000 |
+| Lynde      | Aronson    |        926184 | 463092.0000 |
+| Mildrid    | Sokale     |        815844 | 407922.0000 |
+| Hazel      | Tarbert    |       1125120 | 562560.0000 |
+| Cole       | Kesterton  |       1033428 | 516714.0000 |
+| Theresa    | Binney     |        568248 | 284124.0000 |
+| Estrellita | Daleman    |        842244 | 421122.0000 |
+| Ivy        | Fearey     |       1112520 | 556260.0000 |
++------------+------------+---------------+-------------+
+20 rows in set (0.03 sec)
+
+10.WAQTD EMPLOYEE NAME AND HIS SALARY WITH A HIKE OF 15%.
+
+mysql> SELECT FIRST_NAME,LAST_NAME,SALARY,SALARY+SALARY*15/100
+    -> FROM EMPLOYEES;
++------------+------------+--------+----------------------+
+| FIRST_NAME | LAST_NAME  | SALARY | SALARY+SALARY*15/100 |
++------------+------------+--------+----------------------+
+| D'arcy     | Nortunen   |  62871 |           72301.6500 |
+| Yovonnda   | Magrannell |  63996 |           73595.4000 |
+| Sayer      | Matterson  |  98926 |          113764.9000 |
+| Mindy      | Crissil    |  94860 |          109089.0000 |
+| Keriann    | Alloisi    | 110150 |          126672.5000 |
+| Alaster    | Scutchin   |  32179 |           37005.8500 |
+| North      | de Clerc   | 114257 |          131395.5500 |
+| Elladine   | Rising     |  96767 |          111282.0500 |
+| Nisse      | Voysey     |  52832 |           60756.8000 |
+| Guthrey    | Iacopetti  | 117690 |          135343.5000 |
+| Kass       | Hefferan   |  96401 |          110861.1500 |
+| Virge      | Goodrum    |  54578 |           62764.7000 |
+| Mirilla    | Janowski   | 119241 |          137127.1500 |
+| Lynde      | Aronson    |  77182 |           88759.3000 |
+| Mildrid    | Sokale     |  67987 |           78185.0500 |
+| Hazel      | Tarbert    |  93760 |          107824.0000 |
+| Cole       | Kesterton  |  86119 |           99036.8500 |
+| Theresa    | Binney     |  47354 |           54457.1000 |
+| Estrellita | Daleman    |  70187 |           80715.0500 |
+| Ivy        | Fearey     |  92710 |          106616.5000 |
++------------+------------+--------+----------------------+
+20 rows in set (0.00 sec)
+
+11.WAQTD EMPLOYEE NAME AND HIS SALARY WITH A DEDUCTION OF 19%.
+
+mysql> SELECT FIRST_NAME,LAST_NAME,SALARY,SALARY-SALARY*19/100
+    -> FROM EMPLOYEES;
++------------+------------+--------+----------------------+
+| FIRST_NAME | LAST_NAME  | SALARY | SALARY-SALARY*19/100 |
++------------+------------+--------+----------------------+
+| D'arcy     | Nortunen   |  62871 |           50925.5100 |
+| Yovonnda   | Magrannell |  63996 |           51836.7600 |
+| Sayer      | Matterson  |  98926 |           80130.0600 |
+| Mindy      | Crissil    |  94860 |           76836.6000 |
+| Keriann    | Alloisi    | 110150 |           89221.5000 |
+| Alaster    | Scutchin   |  32179 |           26064.9900 |
+| North      | de Clerc   | 114257 |           92548.1700 |
+| Elladine   | Rising     |  96767 |           78381.2700 |
+| Nisse      | Voysey     |  52832 |           42793.9200 |
+| Guthrey    | Iacopetti  | 117690 |           95328.9000 |
+| Kass       | Hefferan   |  96401 |           78084.8100 |
+| Virge      | Goodrum    |  54578 |           44208.1800 |
+| Mirilla    | Janowski   | 119241 |           96585.2100 |
+| Lynde      | Aronson    |  77182 |           62517.4200 |
+| Mildrid    | Sokale     |  67987 |           55069.4700 |
+| Hazel      | Tarbert    |  93760 |           75945.6000 |
+| Cole       | Kesterton  |  86119 |           69756.3900 |
+| Theresa    | Binney     |  47354 |           38356.7400 |
+| Estrellita | Daleman    |  70187 |           56851.4700 |
+| Ivy        | Fearey     |  92710 |           75095.1000 |
++------------+------------+--------+----------------------+
+20 rows in set (0.00 sec)
+
+12.WAQTD EMPLOYEE NAME AND HIS SALARY WITH AN INCENTIVE OF 500.
+
+mysql> SELECT FIRST_NAME,LAST_NAME,SALARY,SALARY+500
+    -> FROM EMPLOYEES;
++------------+------------+--------+------------+
+| FIRST_NAME | LAST_NAME  | SALARY | SALARY+500 |
++------------+------------+--------+------------+
+| D'arcy     | Nortunen   |  62871 |      63371 |
+| Yovonnda   | Magrannell |  63996 |      64496 |
+| Sayer      | Matterson  |  98926 |      99426 |
+| Mindy      | Crissil    |  94860 |      95360 |
+| Keriann    | Alloisi    | 110150 |     110650 |
+| Alaster    | Scutchin   |  32179 |      32679 |
+| North      | de Clerc   | 114257 |     114757 |
+| Elladine   | Rising     |  96767 |      97267 |
+| Nisse      | Voysey     |  52832 |      53332 |
+| Guthrey    | Iacopetti  | 117690 |     118190 |
+| Kass       | Hefferan   |  96401 |      96901 |
+| Virge      | Goodrum    |  54578 |      55078 |
+| Mirilla    | Janowski   | 119241 |     119741 |
+| Lynde      | Aronson    |  77182 |      77682 |
+| Mildrid    | Sokale     |  67987 |      68487 |
+| Hazel      | Tarbert    |  93760 |      94260 |
+| Cole       | Kesterton  |  86119 |      86619 |
+| Theresa    | Binney     |  47354 |      47854 |
+| Estrellita | Daleman    |  70187 |      70687 |
+| Ivy        | Fearey     |  92710 |      93210 |
++------------+------------+--------+------------+
+20 rows in set (0.00 sec)
+
+13.WAQTD ALL THE DETAILS OF EMPLOYEES ALONG WITH THEIR ANNUAL 
+SALARY.
+
+mysql> SELECT EMPLOYEES.*,SALARY*12 AS ANNUAL_SALARY
+    -> FROM EMPLOYEES;
++-------------+------------+------------+-----------------------------+--------+------------+-----------+---------+---------------+
+| employee_id | first_name | last_name  | job_title                   | salary | reports_to | office_id | DEPT_NO | ANNUAL_SALARY |
++-------------+------------+------------+-----------------------------+--------+------------+-----------+---------+---------------+
+|       33391 | D'arcy     | Nortunen   | Account Executive           |  62871 |      37270 |         1 |      10 |        754452 |
+|       37270 | Yovonnda   | Magrannell | Executive Secretary         |  63996 |       NULL |        10 |      20 |        767952 |
+|       37851 | Sayer      | Matterson  | Statistician III            |  98926 |      37270 |         1 |      30 |       1187112 |
+|       40448 | Mindy      | Crissil    | Staff Scientist             |  94860 |      37270 |         1 |      10 |       1138320 |
+|       56274 | Keriann    | Alloisi    | VP Marketing                | 110150 |      37270 |         1 |      40 |       1321800 |
+|       63196 | Alaster    | Scutchin   | Assistant Professor         |  32179 |      37270 |         2 |      50 |        386148 |
+|       67009 | North      | de Clerc   | VP Product Management       | 114257 |      37270 |         2 |      50 |       1371084 |
+|       67370 | Elladine   | Rising     | Social Worker               |  96767 |      37270 |         2 |      10 |       1161204 |
+|       68249 | Nisse      | Voysey     | Financial Advisor           |  52832 |      37270 |         2 |      20 |        633984 |
+|       72540 | Guthrey    | Iacopetti  | Office Assistant I          | 117690 |      37270 |         3 |      40 |       1412280 |
+|       72913 | Kass       | Hefferan   | Computer Systems Analyst IV |  96401 |      37270 |         3 |      60 |       1156812 |
+|       75900 | Virge      | Goodrum    | Information Systems Manager |  54578 |      37270 |         3 |      70 |        654936 |
+|       76196 | Mirilla    | Janowski   | Cost Accountant             | 119241 |      37270 |         3 |      30 |       1430892 |
+|       80529 | Lynde      | Aronson    | Junior Executive            |  77182 |      37270 |         4 |      50 |        926184 |
+|       80679 | Mildrid    | Sokale     | Geologist II                |  67987 |      37270 |         4 |      20 |        815844 |
+|       84791 | Hazel      | Tarbert    | General Manager             |  93760 |      37270 |         4 |      10 |       1125120 |
+|       95213 | Cole       | Kesterton  | Pharmacist                  |  86119 |      37270 |         4 |      40 |       1033428 |
+|       96513 | Theresa    | Binney     | Food Chemist                |  47354 |      37270 |         5 |      50 |        568248 |
+|       98374 | Estrellita | Daleman    | Staff Accountant IV         |  70187 |      37270 |         5 |      25 |        842244 |
+|      115357 | Ivy        | Fearey     | Structural Engineer         |  92710 |      37270 |         5 |      32 |       1112520 |
++-------------+------------+------------+-----------------------------+--------+------------+-----------+---------+---------------+
+20 rows in set (0.00 sec)
+
+14.WAQTD DISTINCT SALARIES FROM EMPLOYEE TABLE.
+
+mysql> SELECT DISTINCT SALARY
+    -> FROM EMPLOYEES;
++--------+
+| SALARY |
++--------+
+|  62871 |
+|  63996 |
+|  98926 |
+|  94860 |
+| 110150 |
+|  32179 |
+| 114257 |
+|  96767 |
+|  52832 |
+| 117690 |
+|  96401 |
+|  54578 |
+| 119241 |
+|  77182 |
+|  67987 |
+|  93760 |
+|  86119 |
+|  47354 |
+|  70187 |
+|  92710 |
++--------+
+20 rows in set (0.00 sec)
+
+15.WAQTD DISTINCT DEPTNO FROM EMPLOYEE TABLE.
+
+mysql> SELECT DISTINCT DEPT_NO
+    -> FROM EMPLOYEES;
++---------+
+| DEPT_NO |
++---------+
+|      10 |
+|      20 |
+|      30 |
+|      40 |
+|      50 |
+|      60 |
+|      70 |
+|      25 |
+|      32 |
++---------+
+9 rows in set (0.00 sec)
+
+16.WAQTD DISTINCT MGR FROM THE EMPLOYEE TABLE.
+
+mysql> SELECT DISTINCT REPORTS_TO
+    -> FROM EMPLOYEES;
++------------+
+| REPORTS_TO |
++------------+
+|       NULL |
+|      37270 |
++------------+
+2 rows in set (0.13 sec)
+
+
+*WHERE CLAUSE:
+1. WAQTD EMPLOYEE NAME ONLY IF HE IS WORKING IN DEPTNO 10.
+
+mysql> SELECT FIRST_NAME,LAST_NAME,DEPT_NO
+    -> FROM EMPLOYEES
+    -> WHERE DEPT_NO IN ('10');
++------------+-----------+---------+
+| FIRST_NAME | LAST_NAME | DEPT_NO |
++------------+-----------+---------+
+| D'arcy     | Nortunen  |      10 |
+| Mindy      | Crissil   |      10 |
+| Elladine   | Rising    |      10 |
+| Hazel      | Tarbert   |      10 |
++------------+-----------+---------+
+4 rows in set (0.00 sec)
+
+2. WAQTD EMPLOYEE NAME AND HIS SALARY IF HE IS EARNING MORE THAN 1200.
+
+mysql> SELECT FIRST_NAME,LAST_NAME
+    -> ,SALARY
+    -> FROM EMPLOYEES
+    -> WHERE SALARY > 1200;
++------------+------------+--------+
+| FIRST_NAME | LAST_NAME  | SALARY |
++------------+------------+--------+
+| D'arcy     | Nortunen   |  62871 |
+| Yovonnda   | Magrannell |  63996 |
+| Sayer      | Matterson  |  98926 |
+| Mindy      | Crissil    |  94860 |
+| Keriann    | Alloisi    | 110150 |
+| Alaster    | Scutchin   |  32179 |
+| North      | de Clerc   | 114257 |
+| Elladine   | Rising     |  96767 |
+| Nisse      | Voysey     |  52832 |
+| Guthrey    | Iacopetti  | 117690 |
+| Kass       | Hefferan   |  96401 |
+| Virge      | Goodrum    |  54578 |
+| Mirilla    | Janowski   | 119241 |
+| Lynde      | Aronson    |  77182 |
+| Mildrid    | Sokale     |  67987 |
+| Hazel      | Tarbert    |  93760 |
+| Cole       | Kesterton  |  86119 |
+| Theresa    | Binney     |  47354 |
+| Estrellita | Daleman    |  70187 |
+| Ivy        | Fearey     |  92710 |
++------------+------------+--------+
+20 rows in set (0.00 sec)
+
+3. WAQTD EMPLOYE NAME WHO HAVE 7698 AS MGR.
+
+mysql> SELECT FIRST_NAME,LAST_NAME
+    -> FROM EMPLOYEES
+    -> WHERE REPORTS_TO IN ('7698');
+Empty set (0.00 sec)
+
+4. WAQTD ANNUAL SALARY OF ALL THE EMPLOYEE WORKING IN mysql> SELECT DEPT_NO,SALARY*12 AS ANNUAL_SALARY
+    -> FROM EMPLOYEES
+    -> WHERE DEPT_NO IN ('20');
++---------+---------------+
+| DEPT_NO | ANNUAL_SALARY |
++---------+---------------+
+|      20 |        767952 |
+|      20 |        633984 |
+|      20 |        815844 |
++---------+---------------+
+3 rows in set (0.00 sec)DEPTNO 20.
+
+5. WAQTD EMPLOYEE NAME AND HIS SALARY IF HE IS EARNING LESS THAN 3000.
+
+mysql> select first_NAME,LAST_NAME
+    -> from employees
+    -> where salARY < 3000;
+Empty set (0.00 sec)
+
+6. WAQTD EMPLOYE NAME, REPORT_ID, DEPTNO WHO HAVE 37270 AS REPORT_IDmysql> SELECT FIRST_NAME,DEPT_NO
+    -> FROM EMPLOYEES
+    -> WHERE REPORTS_TO IN ('37270');
++------------+---------+
+| FIRST_NAME | DEPT_NO |
++------------+---------+
+| D'arcy     |      10 |
+| Sayer      |      30 |
+| Mindy      |      10 |
+| Keriann    |      40 |
+| Alaster    |      50 |
+| North      |      50 |
+| Elladine   |      10 |
+| Nisse      |      20 |
+| Guthrey    |      40 |
+| Kass       |      60 |
+| Virge      |      70 |
+| Mirilla    |      30 |
+| Lynde      |      50 |
+| Mildrid    |      20 |
+| Hazel      |      10 |
+| Cole       |      40 |
+| Theresa    |      50 |
+| Estrellita |      25 |
+| Ivy        |      32 |
++------------+---------+
+19 rows in set (0.00 sec) AND WORKS IN DEPTNO 30
+
+
