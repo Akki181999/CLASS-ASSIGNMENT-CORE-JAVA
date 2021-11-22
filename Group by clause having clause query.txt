@@ -1,0 +1,338 @@
+1. WRITE A QUERY TO DISPLAY TOTAL SALARY NEEDED TO PAY EACH JOB IN EMPLOYEE TABLE.
+mysql> SELECT SUM(SALARY) AS TOTAL_SALARY
+    -> FROM EMPLOYEES
+    -> GROUP BY JOB_TITLE;
++--------------+
+| TOTAL_SALARY |
++--------------+
+|        62871 |
+|        32179 |
+|        96401 |
+|       119241 |
+|        63996 |
+|        52832 |
+|        47354 |
+|        93760 |
+|        67987 |
+|        54578 |
+|        77182 |
+|       117690 |
+|        86119 |
+|        96767 |
+|        70187 |
+|        94860 |
+|        98926 |
+|        92710 |
+|       110150 |
+|       114257 |
++--------------+
+20 rows in set (0.00 sec)
+
+2. WRITE A QUERY TO DISPLAY THE HIRE DATE ON WHICH AT LEAST 3 EMPLOYEES WHERE HIRED.
+
+mysql> SELECT COUNT(*),DATE_OF_JOINING
+    -> FROM EMPLOYEES
+    -> GROUP BY DATE_OF_JOINING
+    -> HAVING COUNT(*) >= 3;
+Empty set (0.09 sec)
+
+3. WRITE A QUERY TO DISPLAY THE DEPARTMENT NUMBER WHICH HAS MORE THAN 2 EMPLOYEES AND THE TOTAL AMOUNT REQUIRED TO PAY THE 
+MONTHLY SALARIES OF ALL THE EMPLOYEES IN THAT DEPARTMENT SHOULD BE MORE THAN 9000.
+mysql> SELECT COUNT(*),SUM(SALARY),DEPT_NO
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPT_NO
+    -> HAVING COUNT(*)>2 AND SUM(SALARY)>9000;
++----------+-------------+---------+
+| COUNT(*) | SUM(SALARY) | DEPT_NO |
++----------+-------------+---------+
+|        4 |      348258 |      10 |
+|        3 |      184815 |      20 |
+|        3 |      313959 |      40 |
+|        4 |      270972 |      50 |
++----------+-------------+---------+
+4 rows in set (0.10 sec)
+
+4. WRITE A QUERY TO DISPLAY NUMBER OF EMPLOYEES WORKING IN EACH DEPARTMENT AND ITS’ AVERAGE SALARY BY EXCLUDING ALL
+THE EMPLOYEES WHOSE SALARY IS LESS THAN THEIR COMMISSION.
+
+mysql> SELECT COUNT(*),AVG(SALARY),DEPT_NO
+    -> FROM EMPLOYEES
+    -> WHERE SALARY > COMM
+    -> GROUP BY DEPT_NO;
++----------+-------------+---------+
+| COUNT(*) | AVG(SALARY) | DEPT_NO |
++----------+-------------+---------+
+|        4 |  87064.5000 |      10 |
+|        3 |  61605.0000 |      20 |
+|        1 |  70187.0000 |      25 |
+|        2 | 109083.5000 |      30 |
+|        1 |  92710.0000 |      32 |
+|        3 | 104653.0000 |      40 |
+|        4 |  67743.0000 |      50 |
+|        1 |  96401.0000 |      60 |
+|        1 |  54578.0000 |      70 |
++----------+-------------+---------+
+9 rows in set (0.04 sec)
+
+5. WRITE A QUERY TO DISPLAY THE SALARIES WHICH HAS REPETITIONS mysql> SELECT COUNT(*),SALARY
+    -> FROM EMPLOYEES
+    -> GROUP BY SALARY
+    -> HAVING COUNT(*)>=2;
++----------+--------+
+| COUNT(*) | SALARY |
++----------+--------+
+|        2 |  54578 |
++----------+--------+
+1 row in set (0.00 sec)IN THE SAL COLUMN OF EMPLOYEE TABLE.
+
+6. WRITE A QUERY TO DISPLAY THE EMPLOYEE NAME ONLY IF MORE THAN ONE PERSON IN THE EMPLOYEES OF THE COMPANY HAS SAME NAME.
+
+mysql> SELECT COUNT(*),FIRST_NAME
+    -> FROM EMPLOYEES
+    -> GROUP BY FIRST_NAME
+    -> HAVING COUNT(*)>=2;
+Empty set (0.00 sec)
+
+7. WRITE A QUERY TO DISPLAY THE DEPARTMENT NUMBER WHOSE AVERAGE SALARY IS BETWEEN 2500 AND 3000.
+
+mysql> SELECT AVG(SALARY),DEPT_NO
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPT_NO
+    -> HAVING AVG(SALARY) BETWEEN 2500 AND 3000;
+Empty set (0.00 sec)
+
+8. WRITE A QUERY TO DISPLAY THE NUMBER OF EMPLOYEES ONLY IF THEY ARE WORKING AS MANAGER OR ANALYST AND THEIR ANNUALSAL SHOULD 
+ END WITH A ZERO, IN EACH DEPARTMENT.
+
+mysql> select count(*),avg(salary),dept_no
+    -> from employees
+    -> where job_title in ('manager','analyst')
+    -> group by dept_no
+    -> having avg(salary) like '%0';
++----------+-------------+---------+
+| count(*) | avg(salary) | dept_no |
++----------+-------------+---------+
+|        2 |  78315.5000 |      10 |
+|        2 |  95719.5000 |      50 |
++----------+-------------+---------+
+2 rows in set (0.00 sec)
+
+9. WRITE A QUERY TO DISPLAY NO OF CLERKS WORKING IN EACHDEPARTMENT.
+
+mysql> select count(*),dept_no
+    -> from employees
+    -> where job_title in ('clerk')
+    -> group by dept_no;
++----------+---------+
+| count(*) | dept_no |
++----------+---------+
+|        1 |      30 |
+|        1 |      40 |
++----------+---------+
+2 rows in set (0.00 sec)
+
+10. WRITE A QUERY TO DISPLAY HIGHEST SALARY GIVEN TO A MANAGER IN EACH DEPARTMENT.
+
+ mysql> select max(salary),dept_no
+    -> from employees
+    -> where job_title in ('manager')
+    -> group by dept_no;
++-------------+---------+
+| max(salary) | dept_no |
++-------------+---------+
+|       93760 |      10 |
+|       52832 |      20 |
+|      114257 |      50 |
++-------------+---------+
+3 rows in set (0.00 sec)
+
+11. WRITE A QUERY TO DISPLAY NO OF TIMES THE SALARIES HAVE REPEATED IN THE EMP TABLE.
+
+mysql> select count(*),salary
+    -> from employees
+    -> group by salary
+    -> having count(*)
+    -> >=2;
++----------+--------+
+| count(*) | salary |
++----------+--------+
+|        3 |  54578 |
++----------+--------+
+1 row in set (0.00 sec)
+
+12.WRITE A QUERY TO DISPLAY DEPTNO AND MUNBER OF EMPLOYEES WHORKING IN EACH DEPARTMENT EXCEPT FOR THOSE WORKING IN DEPT 10
+
+
+mysql> select count(*),dept_no
+    -> from employees
+    -> where dept_no not in (10)
+    -> group by dept_no;
++----------+---------+
+| count(*) | dept_no |
++----------+---------+
+|        3 |      20 |
+|        1 |      25 |
+|        2 |      30 |
+|        1 |      32 |
+|        3 |      40 |
+|        4 |      50 |
+|        1 |      60 |
+|        1 |      70 |
++----------+---------+
+8 rows in set (0.00 sec)
+
+13.WAQTD NUMBER OF EMPLOYEES GETTING COMISSION IN EACH DEPARTMENT
+
+mysql> select count(*),dept_no
+    -> from employees
+    -> where comm is not null
+    -> group by dept_no;
++----------+---------+
+| count(*) | dept_no |
++----------+---------+
+|        4 |      10 |
+|        3 |      20 |
+|        1 |      25 |
+|        2 |      30 |
+|        1 |      32 |
+|        3 |      40 |
+|        4 |      50 |
+|        1 |      60 |
+|        1 |      70 |
++----------+---------+
+9 rows in set (0.00 sec)
+
+14.WAQTD NUMBER OF EMPLOYEES GETTING SALARY MORE THAN 1600 EXCLUDING ALL THE MANAGERS IN EACH DEPARTEMNT 
+ 
+mysql> select count(*),dept_no
+    -> from employees
+    -> where job_title not in ('manager') and salary > 1600
+    -> group by dept_no;
++----------+---------+
+| count(*) | dept_no |
++----------+---------+
+|        3 |      10 |
+|        2 |      20 |
+|        1 |      25 |
+|        2 |      30 |
+|        1 |      32 |
+|        3 |      40 |
+|        2 |      50 |
+|        1 |      60 |
+|        1 |      70 |
++----------+---------+
+9 rows in set (0.00 sec)
+
+15.WAQTD AVERAGE SALARY NEEDED TO PAY ALL THE EMPLOYEES WHO ARE HAVING A REPORTING MANAGER IN EACH JOB .
+
+mysql> SELECT COUNT(*),AVG(SALARY),JOB_TITLE
+    -> FROM EMPLOYEES
+    -> WHERE REPORTS_TO IS NOT NULL
+    -> GROUP BY JOB_TITLE;
++----------+-------------+-----------------------------+
+| COUNT(*) | AVG(SALARY) | JOB_TITLE                   |
++----------+-------------+-----------------------------+
+|        2 |  70026.5000 | analyst                     |
+|        1 |  32179.0000 | Assistant Professor         |
+|        2 | 104538.0000 | Clerk                       |
+|        1 |  96401.0000 | Computer Systems Analyst IV |
+|        1 | 119241.0000 | Cost Accountant             |
+|        1 |  67987.0000 | Geologist II                |
+|        1 |  54578.0000 | Information Systems Manager |
+|        4 |  78856.7500 | manager                     |
+|        1 | 117690.0000 | Office Assistant I          |
+|        1 |  86119.0000 | Pharmacist                  |
+|        1 |  96767.0000 | Social Worker               |
+|        1 |  54578.0000 | Staff Accountant IV         |
+|        1 |  94860.0000 | Staff Scientist             |
+|        1 |  92710.0000 | Structural Engineer         |
++----------+-------------+-----------------------------+
+14 rows in set (0.00 sec)
+
+16.WAQTD NUMBER OF EMPLOYEES HIRED INTO THE SAME DEPARTMENT ON THE SAME DAY.
+
+mysql> SELECT COUNT(*),DATE_OF_JOINING,DEPT_NO
+    -> FROM EMPLOYEES
+    -> GROUP BY DATE_OF_JOINING,DEPT_NO
+    -> HAVING COUNT(*)>=2;
+Empty set (0.00 sec)
+
+17.WAQTD NUMBER OF EMPLOYEES GETTING THE SAME SALARY ,WORKING IN THE SAME DEPARTMENT 
+
+mysql> SELECT COUNT(*),SALARY,DEPT_NO
+    -> FROM EMPLOYEES
+    -> GROUP BY SALARY,DEPT_NO;
++----------+--------+---------+
+| COUNT(*) | SALARY | DEPT_NO |
++----------+--------+---------+
+|        1 |  32179 |      50 |
+|        1 |  52832 |      20 |
+|        1 |  54578 |      25 |
+|        1 |  54578 |      50 |
+|        1 |  54578 |      70 |
+|        1 |  62871 |      10 |
+|        1 |  63996 |      20 |
+|        1 |  67987 |      20 |
+|        1 |  77182 |      50 |
+|        1 |  86119 |      40 |
+|        1 |  92710 |      32 |
+|        1 |  93760 |      10 |
+|        1 |  94860 |      10 |
+|        1 |  96401 |      60 |
+|        1 |  96767 |      10 |
+|        1 |  98926 |      30 |
+|        1 | 110150 |      40 |
+|        1 | 114257 |      50 |
+|        1 | 117690 |      40 |
+|        1 | 119241 |      30 |
++----------+--------+---------+
+20 rows in set (0.00 sec)
+
+18.WAQTD MAXIMUM SALARY GIVEN IN EACH DESIGNATION EXCLUDING THOSE WHOS NAME STARTS WITH ‘K’
+
+mysql> SELECT MAX(SALARY),JOB_TITLE
+    -> FROM EMPLOYEES
+    -> WHERE FIRST_NAME NOT LIKE 'K%'
+    -> GROUP BY JOB_TITLE
+    -> ;
++-------------+-----------------------------+
+| MAX(SALARY) | JOB_TITLE                   |
++-------------+-----------------------------+
+|       77182 | analyst                     |
+|       32179 | Assistant Professor         |
+|       98926 | Clerk                       |
+|      119241 | Cost Accountant             |
+|       63996 | Executive Secretary         |
+|       67987 | Geologist II                |
+|       54578 | Information Systems Manager |
+|      114257 | manager                     |
+|      117690 | Office Assistant I          |
+|       86119 | Pharmacist                  |
+|       96767 | Social Worker               |
+|       54578 | Staff Accountant IV         |
+|       94860 | Staff Scientist             |
+|       92710 | Structural Engineer         |
++-------------+-----------------------------+
+14 rows in set (0.00 sec)
+
+19.WAQTD NUMBER OF EMPLOYEE NAMES STARTING WITH AN VOWEL IN EACH DEPARTMENT.
+
+mysql> SELECT COUNT(*),FIRST_NAME,DEPT_NO
+    -> FROM EMPLOYEES
+    -> WHERE FIRST_NAME LIKE 'A%' OR FIRST_NAME LIKE 'E%' OR FIRST_NAME LIKE 'I%' OR FIRST_NAME LIKE 'O%' OR FIRST_NAME LIKE 'U%'
+    -> GROUP BY DEPT_NO;
++----------+------------+---------+
+| COUNT(*) | FIRST_NAME | DEPT_NO |
++----------+------------+---------+
+|        1 | Elladine   |      10 |
+|        1 | Estrellita |      25 |
+|        1 | Ivy        |      32 |
+|        1 | Alaster    |      50 |
++----------+------------+---------+
+4 rows in set (0.00 sec)
+
+
+
+
+
+
